@@ -70,5 +70,22 @@ describe('TodoAPI', ()=>{
             var filteredTodos = TodoAPI.filterTodos(todos, true, '');     
             expect(filteredTodos.length).toBe(3);
         });
+
+        it('should return non-completed todos when showCompleted is false', ()=>{
+            var filteredTodos = TodoAPI.filterTodos(todos, false, '');
+            expect(filteredTodos.length).toBe(1);
+        });
+        it('should sort by completed status', ()=>{
+            var filteredTodsos = TodoAPI.filterTodos(todos, true, '');
+            expect(filteredTodsos[0].completed).toBe(false);
+        });
+        it('should filter todos by search Text', ()=>{
+            var filteredTodsos = TodoAPI.filterTodos(todos, true, 'some');
+            expect(filteredTodsos.length).toBe(2);
+        });
+        it('should return all todos if searchText is empty', ()=>{
+            var filteredTodsos = TodoAPI.filterTodos(todos, true, '');
+            expect(filteredTodsos.length).toBe(3);
+        });
     });
 });
